@@ -6,11 +6,11 @@
 /*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 17:06:35 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/09/03 09:17:34 by kmorulan         ###   ########.fr       */
+/*   Updated: 2019/09/03 09:43:53 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push.h"
+#include "includes/push.h"
 
 int     duplicates(t_stack *stack)
 {

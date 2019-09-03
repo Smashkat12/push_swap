@@ -6,11 +6,11 @@
 /*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:17:58 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/09/03 09:17:30 by kmorulan         ###   ########.fr       */
+/*   Updated: 2019/09/03 09:43:45 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push.h"
+#include "includes/push.h"
 
 void	pa(t_stack **b_stk, t_stack **a_stk)
 {

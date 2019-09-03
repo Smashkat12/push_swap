@@ -6,11 +6,11 @@
 /*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 09:05:16 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/09/03 09:19:12 by kmorulan         ###   ########.fr       */
+/*   Updated: 2019/09/03 09:43:44 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push.h"
+#include "includes/push.h"
 
 t_stack		*creat_stack(char **src, int nums)
 {

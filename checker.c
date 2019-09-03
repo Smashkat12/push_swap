@@ -6,11 +6,11 @@
 /*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 09:27:04 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/09/03 09:27:22 by kmorulan         ###   ########.fr       */
+/*   Updated: 2019/09/03 09:44:07 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push.h"
+#include "includes/push.h"
 #include "get_next_line.h"
 
 void     do_steps(char *str, t_stack **a_stk, t_stack **b_stk)

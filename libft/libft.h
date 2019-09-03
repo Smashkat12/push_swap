@@ -6,7 +6,7 @@
 /*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 14:06:43 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/08/24 10:56:42 by kmorulan         ###   ########.fr       */
+/*   Updated: 2019/09/03 09:20:54 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void				ft_lstadd_end(t_list **alst, t_list *new);
 int					ft_isupper(int c);
 int					ft_islower(int c);
 char				*ft_strndup(const char *s1, size_t n);
-int					ft_lstlen(t_list **alst);
+//int					ft_lstlen(t_list **alst);
 int					ft_copyuntil(char **dst, char *src, char c);
 char				*ft_strjoinch(char const *s, char c);
 void				ft_swapnfree(void **var, void *new_val);

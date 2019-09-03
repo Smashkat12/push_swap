@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_stack.c                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
+/*   By: kmorulan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/24 14:19:19 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/09/03 09:17:38 by kmorulan         ###   ########.fr       */
+/*   Created: 2019/06/29 15:35:30 by kmorulan          #+#    #+#             */
+/*   Updated: 2019/07/03 11:06:46 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 11000
 
-void	display_stack(t_stack *a_stk)
-{
-	t_stack *temp;
+int		get_next_line(const int fd, char **line);
 
-	temp = a_stk;
-	while (temp)
-	{
-		ft_putnbr(temp->num);
-		write(1, "\n", 1);
-		temp = temp->next;
-	}
-}
+#endif

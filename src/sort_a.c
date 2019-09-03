@@ -6,77 +6,85 @@
 /*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 12:29:36 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/08/24 15:17:10 by kmorulan         ###   ########.fr       */
+/*   Updated: 2019/09/03 09:30:59 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push.h"
 
-void		sort_sa(t_list *a_stk)
+void	sort_sa(t_stack *a_stk)
 {
-	int			*temp;
-	int			b;
-	int			a;
+	int temp;
 
-	temp = a_stk->content;
-	a = *temp;
-	temp = a_stk->next->content;
-	b = *temp;
+	temp = (a_stk->next)->num;
+	(a_stk->next)->num = a_stk->num;
+	a_stk->num = temp;
+	write(1, "sa\n", 3);
 
-	free(a_stk->content);
-	a_stk->content = malloc(sizeof(int));
-	ft_memcpy(a_stk->content,&b,sizeof(int));
-	free(a_stk->next->content);
-	a_stk->next->content = malloc(sizeof(int));
-	ft_memcpy(a_stk->next->content,&a, sizeof(int));
 }
-
-void		sort_ra(t_list *a_stk)
+void	sort_ra(t_stack *a_stk)
 {
-	int			*temp;
-	int			b;
-	int			a;
-	int			c;
+	int temp1;
+	int temp2;
+	int temp3;
 
-	temp = a_stk->content;
-	a = *temp;
-	temp = a_stk->next->content;
-	b = *temp;
-	temp = a_stk->next->next->content;
-	c = *temp;
-	free(a_stk->next->next->content);
-	a_stk->next->next->content = malloc(sizeof(int));
-	ft_memcpy(a_stk->next->next->content, &a, sizeof(int));
-	free(a_stk->next->content);
-	a_stk->next->content = malloc(sizeof(int));
-	ft_memcpy(a_stk->next->content, &c, sizeof(int));
-	free(a_stk->content);
-	a_stk->content = malloc(sizeof(int));
-	ft_memcpy(a_stk->content, &b, sizeof(int));
+
+	temp1 = a_stk->num;
+	temp2 = (a_stk->next)->num;
+	temp3 = (a_stk->next->next)->num;
+	(a_stk->next->next)->num = temp1;
+	(a_stk->next)->num =  temp3;
+	a_stk->num = temp2;
+	write(1, "ra\n", 3);
+
 }
-
-void		sort_rra(t_list *a_stk)
+void	sort_rra(t_stack *a_stk)
 {
-	int			*temp;
-	int			b;
-	int			a;
-	int			c;
+	int temp1;
+	int temp2;
+	int temp3;
 
-	temp = a_stk->content;
-	a = *temp;
-	temp = a_stk->next->content;
-	b = *temp;
-	temp = a_stk->next->next->content;
-	c = *temp;
-	free(a_stk->content);
-	a_stk->content = malloc(sizeof(int));
-	ft_memcpy(a_stk->content, &c, sizeof(int));
-	free(a_stk->next->content);
-	a_stk->next->content = malloc(sizeof(int));
-	ft_memcpy(a_stk->next->content, &a, sizeof(int));
-	free(a_stk->next->next->content);
-	a_stk->next->next->content = malloc(sizeof(int));
-	ft_memcpy(a_stk->next->next->content, &b, sizeof(int));
+	temp1 = a_stk->num;
+	temp2 = (a_stk->next)->num;
+	temp3 = (a_stk->next->next)->num;
+	a_stk->num = temp3;
+	(a_stk->next)->num = temp1;
+	(a_stk->next->next)->num = temp2;
+	write(1, "rra\n", 4);
 
+}
+void	sort_rra2(t_stack **a_stk)
+{
+	t_stack *temp1;
+	t_stack *temp2;
 
+	temp1 = *a_stk;
+	temp2 = (*a_stk)->next;
+
+	while ((temp2->next) != NULL)
+	{
+		temp1 = temp2;
+		temp2 = temp2->next;
+	}
+
+	temp2->next = *a_stk;
+	temp1->next = NULL;
+	*a_stk = temp2;
+}
+void	sort_ra2(t_stack **a_stk)
+{
+	t_stack *temp1;
+	t_stack *temp2;
+
+	temp1 = *a_stk;
+	temp2 = (*a_stk)->next;
+
+	while ((temp2->next) != NULL)
+	{
+		temp2 = temp2->next;
+	}
+
+	temp2->next = temp1;
+	*a_stk = temp1->next;
+	temp1->next = NULL;
 }

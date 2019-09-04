@@ -6,50 +6,101 @@
 #    By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/28 13:51:43 by kmorulan          #+#    #+#              #
-#    Updated: 2019/08/20 17:33:01 by kmorulan         ###   ########.fr        #
+#    Updated: 2019/09/03 14:01:01 by kmorulan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+.PHONY: all, clean, fclean, re
 
-LIBFT = libft/ft_atoi.c libft/ft_isalnum.c libft/ft_isascii.c libft/ft_isprint.c libft/ft_memchr.c \
-    libft/ft_memcpy.c libft/ft_memset.c libft/ft_strchr.c libft/ft_strcpy.c libft/ft_strlcat.c \
-    libft/ft_strncat.c libft/ft_strncpy.c libft/ft_strrchr.c libft/ft_tolower.c libft/ft_bzero.c \
-    libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_memccpy.c libft/ft_memcmp.c libft/ft_memmove.c \
-    libft/ft_strcat.c libft/ft_strcmp.c libft/ft_strdup.c libft/ft_strlen.c libft/ft_strncmp.c \
-    libft/ft_strstr.c libft/ft_toupper.c libft/ft_memalloc.c libft/ft_memdel.c libft/ft_strnew.c \
-    libft/ft_strdel.c libft/ft_strclr.c libft/ft_striter.c libft/ft_striteri.c libft/ft_strmap.c \
-    libft/ft_strmapi.c libft/ft_strequ.c libft/ft_strnequ.c libft/ft_strsub.c libft/ft_strjoin.c \
-    libft/ft_strtrim.c libft/ft_strsplit.c libft/ft_itoa.c libft/ft_putchar.c libft/ft_putstr.c \
-    libft/ft_putendl.c libft/ft_putchar_fd.c libft/ft_putstr_fd.c libft/ft_putendl_fd.c \
-    libft/ft_putnbr_fd.c libft/ft_putnbr.c libft/ft_strnstr.c libft/ft_lstnew.c libft/ft_lstdel.c \
-	libft/ft_lstdelone.c libft/ft_lstadd.c libft/ft_lstiter.c libft/ft_lstmap.c libft/ft_isupper.c \
-	libft/ft_islower.c libft/ft_strndup.c libft/ft_lstlen.c libft/ft_copyuntil.c libft/ft_strjoinch.c \
-	libft/ft_swapnfree.c
+NAME = checker
 
-PRINTF = ft_printf.c flags.c format_specifier.c handle_c.c handle_id.c handle_o.c handle_p.c handle_s.c \
-        handle_u.c handle_x.c initializers.c itoa_id.c itoa_u.c itoa_x.c length_mods.c parse_format.c \
-        precision_id.c precision_p.c precision_s.c prefix.c print_handler.c width_id.c width_p.c \
-        width_s.c itoa_o.c
+NAME2 = push_swap
 
-INC = includes/ft_printf.h libft/libft.h
+CC = gcc
 
-FILES = $(LIBFT) $(PRINTF)
+CFLAGS = -Wall -Wextra -Werror -g
 
-OBJ = *.o
+LIB = libft
 
-FLAGS = -Wall -Werror -Wextra -c
+LDFLAGS = -Llibft
 
-all: $(NAME)
-$(NAME):
-	gcc -c $(FLAGS) $(FILES) $(INC)
-	ar rcs $(NAME) $(OBJ)
+LDLIBS = -lft
+
+SRC_PATH = src
+
+SRC_NAME = checker.c\
+		chk_func.c\
+		chk_sort.c\
+		chk_sort.c\
+		dup.c\
+		sort_a.c\
+		get_next_line.c
+
+SRC_NAME2 = push_swap.c\
+		push_func.c\
+		dup.c\
+		lst_len.c\
+		display_stack.c\
+		sort_a.c
+
+AR = ar rc
+
+INC_LIB = -I libft/
+
+CPPFLAGS = -I includes
+
+OBJ_PATH = obj
+
+OBJ_PATH2 = obj2
+
+OBJ_NAME = $(SRC_NAME:.c=.o)
+
+OBJ_NAME2 = $(SRC_NAME2:.c=.o)
+
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
+
+SRC2 = $(addprefix $(SRC_PATH)/,$(SRC_NAME2))
+
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
+OBJ2 = $(addprefix $(OBJ_PATH2)/,$(OBJ_NAME2))
+
+all: $(NAME) $(NAME2)
+
+$(NAME): $(OBJ)
+	@make -C $(LIB)
+	@echo $(NAME) ": Sources compiling..."
+	@$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+	@echo "Executable "$(NAME)" made"
+
+$(NAME2): $(OBJ2)
+	@make -C $(LIB)
+	@echo $(NAME2) ": Sources compiling..."
+	@$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+	@echo "Executable "$(NAME2)" made"
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir -p $(OBJ_PATH) 2> /dev/null || true
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_LIB) -o $@ -c $<
+
+$(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
+	@mkdir -p $(OBJ_PATH2) 2> /dev/null || true
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_LIB) -o $@ -c $<
 
 clean:
-	rm -f *.o
+	@make fclean -C $(LIB)
+	@rm -f $(OBJ) $(OBJ2)
+	@rm -rf $(OBJ_PATH) || true
+	@rm -rf $(OBJ_PATH2) || true
+	@echo $(OBJ_PATH)" and "$(OBJ_PATH2)" deleted !"
 
 fclean: clean
-	rm -f $(NAME)
-re: fclean all
+	@rm -f $(NAME) $(NAME2)
+	@echo "Executable "$(NAME)" and "$(NAME2)" deleted !"
 
-.PHONY: clean fclean all re
+re: fclean all
+	@echo "Make re done !"
+
+norme:
+	norminette $(SRC)
+	norminette $(INC_PATH)

@@ -6,11 +6,11 @@
 /*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 09:28:42 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/09/03 09:43:59 by kmorulan         ###   ########.fr       */
+/*   Updated: 2019/09/03 13:34:06 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push.h"
+#include "../includes/push.h"
 
 void	chksort_sa(t_stack *a_stk)
 {

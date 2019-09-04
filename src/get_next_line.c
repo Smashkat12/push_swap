@@ -6,12 +6,12 @@
 /*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 15:04:18 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/09/03 09:43:48 by kmorulan         ###   ########.fr       */
+/*   Updated: 2019/09/03 13:34:41 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "libft/libft.h"
+#include "../includes/get_next_line.h"
+#include "../libft/libft.h"
 
 static t_list	*get_file_buf(size_t fd, t_list **start)
 {

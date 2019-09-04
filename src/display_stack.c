@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlen.c                                        :+:      :+:    :+:   */
+/*   display_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmorulan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kmorulan <kmorulan@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/17 10:43:16 by kmorulan          #+#    #+#             */
-/*   Updated: 2019/06/17 10:46:15 by kmorulan         ###   ########.fr       */
+/*   Created: 2019/08/24 14:19:19 by kmorulan          #+#    #+#             */
+/*   Updated: 2019/09/03 13:34:15 by kmorulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push.h"
 
-int		ft_lstlen(t_list **alst)
+void	display_stack(t_stack *a_stk)
 {
-	t_list	*temp;
-	int		count;
+	t_stack *temp;
 
-	temp = *alst;
-	count = 0;
-	while (temp != NULL)
+	temp = a_stk;
+	while (temp)
 	{
-		count++;
-		temp = (*temp).next;
+		ft_putnbr(temp->num);
+		write(1, "\n", 1);
+		temp = temp->next;
 	}
-	return (count);
 }
